@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import NewsScreen323 from './components/NewsScreen/NewsScreen';
 import ProductsScreen323 from './components/ProductsScreen';
 import CartScreen323 from './components/CartScreen';
-import ProfileScreen323 from './components/ProfileScreen';
+import ProfileScreen323 from './components/ProfileScreen/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 

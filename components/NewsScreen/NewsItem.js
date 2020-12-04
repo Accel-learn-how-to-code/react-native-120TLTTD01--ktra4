@@ -31,7 +31,7 @@ export default function NewsItem({title323}) {
 
           <View style={styles.infor323}>
             <Text style={styles.label323}>
-              The Coffee House đồng hành cùng bạn "Go Green"!
+              The Coffee House đồng hành cùng bạn "Go Green"
             </Text>
             <Text>
               Tại The Coffee House, hành trình "Go Green" được lan toả mỗi
