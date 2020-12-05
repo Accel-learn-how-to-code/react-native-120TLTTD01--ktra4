@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 
 //Component
 import NewsScreen323 from './components/NewsScreen/NewsScreen';
-import ProductsScreen323 from './components/ProductsScreen';
+import ProductsScreen323 from './components/ProductsScreen/ProductsScreen';
 import CartScreen323 from './components/CartScreen';
 import ProfileScreen323 from './components/ProfileScreen/ProfileScreen';
 
