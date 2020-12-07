@@ -49,4 +49,7 @@ const items = [
   },
 ];
 
-export default items;
+const cart = [];
+
+module.exports = cart;
+module.exports = items;

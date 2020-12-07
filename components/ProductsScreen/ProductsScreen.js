@@ -13,6 +13,7 @@ import {
 
 //Data
 import data323 from '../../Data/data';
+
 //Components
 import ListItem323 from './ListItem';
 import Header323 from './Header';
@@ -47,13 +48,13 @@ export default class App extends Component {
   render() {
     const {receipStatus323} = this.state;
 
-    let items323 = data323;
+    let items323 = [];
 
-    if (receipStatus323 !== 0) {
-      items323 = data323.filter((item323) => {
-        return item323.type === receipStatus323;
-      });
-    }
+    receipStatus323 === 0
+      ? (items323 = data323)
+      : (items323 = data323.filter((item323) => {
+          return item323.type === receipStatus323;
+        }));
 
     let itemsList323 = items323.map((item323) => {
       return (
