@@ -17,6 +17,7 @@ import data323 from '../../Data/data';
 //Components
 import ListItem323 from './ListItem';
 import Header323 from './Header';
+import ItemModal323 from '../ItemModal';
 
 export default class App extends Component {
   constructor() {
@@ -59,7 +60,7 @@ export default class App extends Component {
     let itemsList323 = items323.map((item323) => {
       return (
         <ListItem323
-          //controlModal={() => this.selectModal.controlModal(item.id)}
+          controlModal={() => this.itemModal323.controlModal323(item323)}
           item323={item323}
           key={item323.id}
         />
@@ -73,10 +74,13 @@ export default class App extends Component {
           changeToOnDrink323={this.changeToOnDrink323}
           changeToCake323={this.changeToCake323}
         />
+
         <ScrollView style={{backgroundColor: '#efeef3'}}>
           <Text style={styles.label323}>Danh sách sản phẩm</Text>
           <View style={styles.container323}>{itemsList323}</View>
         </ScrollView>
+
+        <ItemModal323 ref={(value) => (this.itemModal323 = value)} />
       </>
     );
   }
