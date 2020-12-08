@@ -60,7 +60,7 @@ export default class App extends Component {
     let itemsList323 = items323.map((item323) => {
       return (
         <ListItem323
-          controlModal={() => this.itemModal323.controlModal323(item323)}
+          controlModal323={() => this.itemModal323.controlModal323(item323)}
           item323={item323}
           key={item323.id}
         />

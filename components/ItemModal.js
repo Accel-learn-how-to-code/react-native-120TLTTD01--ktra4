@@ -105,8 +105,7 @@ const styles = StyleSheet.create({
   centeredModal: {
     flex: 1,
     justifyContent: 'center',
-    alignSelf: 'center',
-    width: deviceWidth323 * 0.7,
+    alignItems: 'center',
   },
   modalView: {
     backgroundColor: 'white',
@@ -123,6 +122,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#fff',
     borderRadius: 10,
+    width: deviceWidth323 * 0.7,
   },
   label323: {
     fontWeight: 'bold',
