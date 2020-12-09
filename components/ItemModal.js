@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/dist/Ionicons';
 const deviceWidth323 = Dimensions.get('window').width;
 
 //Data
-import cart from '../Data/data';
+import cart from '../Data/cart';
 
 //component
 import ItemHeader323 from './ItemHeader';
@@ -27,9 +27,30 @@ export default class ItemModal extends Component {
   }
 
   controlModal323 = (item323) => {
+    let index = cart.findIndex((x) => {
+      return item323.id === x.id;
+    });
+    index !== -1
+      ? this.setState({
+          modalVisible: !this.state.modalVisible,
+          item323: {...cart[index]},
+        })
+      : this.setState({
+          modalVisible: !this.state.modalVisible,
+          item323: {...item323, quantity: 1},
+        });
+  };
+
+  addItem323 = () => {
+    const {item323} = this.state;
+    let index = cart.findIndex((x) => {
+      return item323.id === x.id;
+    });
+
+    index === -1 ? cart.push(item323) : (cart[index] = item323);
+    console.log('test: ' + JSON.stringify(cart));
     this.setState({
       modalVisible: !this.state.modalVisible,
-      item323: {...item323, quantity: 1},
     });
   };
 
@@ -87,7 +108,9 @@ export default class ItemModal extends Component {
               </View>
 
               <View style={styles.buttonHolder323}>
-                <TouchableOpacity style={styles.button323}>
+                <TouchableOpacity
+                  style={styles.button323}
+                  onPress={this.addItem323}>
                   <Text style={styles.buttonLabel323}>
                     {item323.quantity * item323.price}.000 đ
                   </Text>
