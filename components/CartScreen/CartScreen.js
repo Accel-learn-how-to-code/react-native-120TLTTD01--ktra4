@@ -11,9 +11,21 @@ import Header323 from './Header';
 import Information323 from './Information';
 import Time323 from './Time';
 import Item323 from './Item';
-import ItemModal323 from '../ItemModal';
+import ItemModal323 from './ItemModal';
 
 export default class CartScreen extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count323: 0,
+    };
+  }
+  refreshScreen323 = () => {
+    this.setState({
+      count323: ++this.state.count323,
+    });
+  };
+
   render() {
     let listItem323 = cart323.map((item323) => {
       return (
@@ -42,7 +54,18 @@ export default class CartScreen extends Component {
           <Time323 />
 
           <Title323 title323="Chi tiết đơn hàng" />
-          {listItem323}
+          {listItem323.length !== 0 ? (
+            listItem323
+          ) : (
+            <View style={styles.priceHolder323}>
+              <View style={styles.price323}>
+                <Text style={styles.title323}>Giỏ hàng trống</Text>
+                <View style={styles.priceLabel323}>
+                  <Text style={styles.title323}>0 đ</Text>
+                </View>
+              </View>
+            </View>
+          )}
 
           <View style={styles.priceHolder323}>
             <View style={styles.price323}>
@@ -74,7 +97,10 @@ export default class CartScreen extends Component {
           </View>
         </ScrollView>
 
-        <ItemModal323 ref={(value) => (this.itemModal323 = value)} />
+        <ItemModal323
+          ref={(value) => (this.itemModal323 = value)}
+          refreshScreen323={this.refreshScreen323}
+        />
       </>
     );
   }

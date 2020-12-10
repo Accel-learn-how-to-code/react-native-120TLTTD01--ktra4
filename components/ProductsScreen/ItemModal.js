@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/dist/Ionicons';
 const deviceWidth323 = Dimensions.get('window').width;
 
 //Data
-import cart from '../Data/cart';
+import cart from '../../Data/cart';
 
 //component
 import ItemHeader323 from './ItemHeader';
@@ -48,7 +48,6 @@ export default class ItemModal extends Component {
     });
 
     index === -1 ? cart.push(item323) : (cart[index] = item323);
-    console.log('test: ' + JSON.stringify(cart));
     this.setState({
       modalVisible: !this.state.modalVisible,
     });

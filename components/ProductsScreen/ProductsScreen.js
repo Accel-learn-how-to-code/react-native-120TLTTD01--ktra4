@@ -17,7 +17,7 @@ import data323 from '../../Data/data';
 //Components
 import ListItem323 from './ListItem';
 import Header323 from './Header';
-import ItemModal323 from '../ItemModal';
+import ItemModal323 from './ItemModal';
 
 export default class App extends Component {
   constructor() {
