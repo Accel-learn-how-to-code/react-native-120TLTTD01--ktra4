@@ -13,7 +13,12 @@ const deviceWidth323 = Dimensions.get('window').width;
 function Item({item323, controlModal323}) {
   return (
     <TouchableOpacity style={styles.itemHolder323} onPress={controlModal323}>
-      <Image source={item323.image} style={styles.imageHolder323} />
+      <Image
+        source={{
+          uri: item323.image,
+        }}
+        style={styles.imageHolder323}
+      />
       <View style={styles.information323}>
         <Text style={styles.title323}>{item323.title}</Text>
         <View style={styles.priceHolder323}>

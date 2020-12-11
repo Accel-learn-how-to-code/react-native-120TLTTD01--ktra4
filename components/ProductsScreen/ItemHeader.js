@@ -6,7 +6,12 @@ const WelcomeTab = ({item323}) => {
   return (
     <TouchableOpacity style={styles.welcomeTab323}>
       <View style={styles.logoHolder323}>
-        <Image style={styles.logoProfile323} source={item323.image} />
+        <Image
+          style={styles.logoProfile323}
+          source={{
+            uri: item323.image,
+          }}
+        />
       </View>
       <View style={styles.titleHolder323}>
         <Text style={styles.loginSignupLabel323}>{item323.title}</Text>
