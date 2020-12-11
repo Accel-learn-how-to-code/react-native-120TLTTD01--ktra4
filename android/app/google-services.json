@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "716837693403",
+    "project_id": "ktralan3",
+    "storage_bucket": "ktralan3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716837693403:android:5641ba32199ec130f469fe",
+        "android_client_info": {
+          "package_name": "com.ktralan3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716837693403-4llcst39p4vukkkbnkrlu2apkab0amka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJpI03-wo4Xf7XLH1r6PeFuksg3n1luLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716837693403-4llcst39p4vukkkbnkrlu2apkab0amka.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
