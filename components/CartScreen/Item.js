@@ -11,7 +11,12 @@ export default class Item extends Component {
     let totalPrice323 = item323.price * item323.quantity;
     return (
       <TouchableOpacity style={styles.container323} onPress={controlModal323}>
-        <Image source={item323.image} style={styles.icon323} />
+        <Image
+          source={{
+            uri: item323.image,
+          }}
+          style={styles.icon323}
+        />
         <View style={styles.infor323}>
           <View>
             <Text style={styles.title323}>{item323.title}</Text>

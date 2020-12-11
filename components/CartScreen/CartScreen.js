@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
-import {Text, View, ScrollView, StyleSheet, Image} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
+import firestore from '@react-native-firebase/firestore';
 
 //data
 import cart323 from '../../Data/cart';
@@ -23,6 +31,13 @@ export default class CartScreen extends Component {
   refreshScreen323 = () => {
     this.setState({
       count323: ++this.state.count323,
+    });
+  };
+
+  buyItem323 = async () => {
+    const ref = firestore().collection('cart');
+    await ref.add({
+      cart323,
     });
   };
 
@@ -97,6 +112,10 @@ export default class CartScreen extends Component {
           </View>
         </ScrollView>
 
+        <TouchableOpacity style={styles.button323} onPress={this.buyItem323}>
+          <Text>Thanh toán</Text>
+        </TouchableOpacity>
+
         <ItemModal323
           ref={(value) => (this.itemModal323 = value)}
           refreshScreen323={this.refreshScreen323}
@@ -128,5 +147,12 @@ const styles = StyleSheet.create({
   },
   title323: {
     fontSize: 16,
+  },
+  button323: {
+    width: '100%',
+    paddingVertical: 15,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: 'tomato',
   },
 });

@@ -25,7 +25,6 @@ export default class App extends Component {
       .then((querySnapshot) => {
         console.log('Products Number : ' + querySnapshot.size);
         querySnapshot.forEach((documentSnapshot) => {
-
           data323.push({
             id: documentSnapshot.id,
             ...documentSnapshot.data(),
