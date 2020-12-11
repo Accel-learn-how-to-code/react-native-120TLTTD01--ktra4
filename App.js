@@ -5,6 +5,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 
+//data
+import data323 from './Data/data';
+
 //Component
 import NewsScreen323 from './components/NewsScreen/NewsScreen';
 import ProductsScreen323 from './components/ProductsScreen/ProductsScreen';
@@ -15,6 +18,22 @@ import {Component} from 'react';
 const Tab = createBottomTabNavigator();
 
 export default class App extends Component {
+  componentDidMount() {
+    firestore()
+      .collection('products')
+      .get()
+      .then((querySnapshot) => {
+        console.log('Products Number : ' + querySnapshot.size);
+        querySnapshot.forEach((documentSnapshot) => {
+
+          data323.push({
+            id: documentSnapshot.id,
+            ...documentSnapshot.data(),
+          });
+        });
+      });
+  }
+
   render() {
     return (
       <NavigationContainer>
