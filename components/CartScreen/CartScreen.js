@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import firestore from '@react-native-firebase/firestore';
@@ -39,6 +40,19 @@ export default class CartScreen extends Component {
     await ref.add({
       cart323,
     });
+    cart323.length = 0;
+    this.refreshScreen323();
+    Alert.alert(
+      'Thông báo',
+      'Thanh toán thành công!',
+      [
+        {
+          text: 'Ok',
+          style: 'cancel',
+        },
+      ],
+      {cancelable: false},
+    );
   };
 
   render() {
@@ -113,7 +127,7 @@ export default class CartScreen extends Component {
         </ScrollView>
 
         <TouchableOpacity style={styles.button323} onPress={this.buyItem323}>
-          <Text>Thanh toán</Text>
+          <Text style={styles.buttonLabel323}>Thanh toán</Text>
         </TouchableOpacity>
 
         <ItemModal323
@@ -151,8 +165,14 @@ const styles = StyleSheet.create({
   button323: {
     width: '100%',
     paddingVertical: 15,
+    marginTop: 5,
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: 'tomato',
+    backgroundColor: '#eb7e23',
+  },
+  buttonLabel323: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#fff',
   },
 });

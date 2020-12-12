@@ -84,11 +84,7 @@ export default class ItemModal extends Component {
             <ItemHeader323 item323={item323} />
 
             <Text style={styles.label323}>Giới thiệu món</Text>
-            <Text style={styles.description323}>
-              Tận hưởng từng ngụm ấm áp, ngọt dịu từ sô cô la thượng hạng kết
-              hợp với lúa mạch thơm lừng. Vị giáng sinh đặc biệt này là dành cho
-              bạn, thưởng thức ngay nhé.
-            </Text>
+            <Text style={styles.description323}>{item323.description}</Text>
 
             <View style={styles.order323}>
               <View style={styles.quantity323}>
