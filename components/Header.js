@@ -11,58 +11,46 @@ import {
 export default class Header extends Component {
   render() {
     const {
-      receipStatus323,
-      changeToAll323,
-      changeToOnDrink323,
-      changeToCake323,
+      receipStatus,
+      changeToAll,
+      changeToOnDrink,
+      changeToCake,
     } = this.props;
 
     return (
-      <View style={styles.header323}>
+      <View style={styles.header}>
         <TouchableOpacity
           style={
-            receipStatus323 === 0
-              ? styles.headerItemActive323
-              : styles.headerItem323
+            receipStatus === 0 ? styles.headerItemActive : styles.headerItem
           }
-          onPress={changeToAll323}>
+          onPress={changeToAll}>
           <Text
             style={
-              receipStatus323 === 0
-                ? styles.headerLabelActive323
-                : styles.headerLabel323
+              receipStatus === 0 ? styles.headerLabelActive : styles.headerLabel
             }>
             Phổ biến
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={
-            receipStatus323 === 1
-              ? styles.headerItemActive323
-              : styles.headerItem323
+            receipStatus === 1 ? styles.headerItemActive : styles.headerItem
           }
-          onPress={changeToOnDrink323}>
+          onPress={changeToOnDrink}>
           <Text
             style={
-              receipStatus323 === 1
-                ? styles.headerLabelActive323
-                : styles.headerLabel323
+              receipStatus === 1 ? styles.headerLabelActive : styles.headerLabel
             }>
             Thức uống
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={
-            receipStatus323 === 2
-              ? styles.headerItemActive323
-              : styles.headerItem323
+            receipStatus === 2 ? styles.headerItemActive : styles.headerItem
           }
-          onPress={changeToCake323}>
+          onPress={changeToCake}>
           <Text
             style={
-              receipStatus323 === 2
-                ? styles.headerLabelActive323
-                : styles.headerLabel323
+              receipStatus === 2 ? styles.headerLabelActive : styles.headerLabel
             }>
             Đồ ăn
           </Text>
@@ -73,18 +61,18 @@ export default class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-  header323: {
+  header: {
     backgroundColor: '#fff',
     height: 45,
     flexDirection: 'row',
     marginBottom: 10,
   },
-  headerItem323: {
+  headerItem: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  headerItemActive323: {
+  headerItemActive: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -92,12 +80,12 @@ const styles = StyleSheet.create({
     borderBottomColor: '#eb7e23',
     fontSize: 15,
   },
-  headerLabelActive323: {
+  headerLabelActive: {
     fontWeight: 'bold',
     color: '#eb7e23',
     fontSize: 15,
   },
-  headerLabel323: {
+  headerLabel: {
     fontWeight: 'bold',
     color: '#aaa',
   },

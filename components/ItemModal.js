@@ -9,85 +9,61 @@ import {
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
-const deviceWidth323 = Dimensions.get('window').width;
-
-//Data
-import cart from '../../Data/cart';
+const deviceWidth = Dimensions.get('window').width;
 
 //component
-import ItemHeader323 from './ItemHeader';
+import ItemHeader from './ItemHeader';
 
 export default class ItemModal extends Component {
   constructor() {
     super();
     this.state = {
       modalVisible: false,
-      item323: {},
+      item: {},
     };
   }
 
-  controlModal323 = (item323) => {
-    let index = cart.findIndex((x) => {
-      return item323.id === x.id;
-    });
-    index !== -1
-      ? this.setState({
-          modalVisible: !this.state.modalVisible,
-          item323: {...cart[index]},
-        })
-      : this.setState({
-          modalVisible: !this.state.modalVisible,
-          item323: {...item323, quantity: 1},
-        });
-  };
-
-  addItem323 = () => {
-    const {item323} = this.state;
-    let index = cart.findIndex((x) => {
-      return item323.id === x.id;
-    });
-
-    index === -1 ? cart.push(item323) : (cart[index] = item323);
+  controlModal = (item) => {
     this.setState({
       modalVisible: !this.state.modalVisible,
     });
   };
 
-  increaseQuantity323 = () => {
-    const {item323} = this.state;
+  increaseQuantity = () => {
+    const {item} = this.state;
     this.setState({
-      item323: {...item323, quantity: ++item323.quantity},
+      item: {...item, quantity: ++item.quantity},
     });
   };
 
-  decreaseQuantity323 = () => {
-    const {item323} = this.state;
-    if (item323.quantity > 1) {
+  decreaseQuantity = () => {
+    const {item} = this.state;
+    if (item.quantity > 1) {
       this.setState({
-        item323: {...item323, quantity: --item323.quantity},
+        item: {...item, quantity: --item.quantity},
       });
     }
   };
 
   render() {
-    const {item323} = this.state;
+    const {item} = this.state;
     return (
       <Modal
         animationType="fade"
         transparent={true}
         visible={this.state.modalVisible}>
         <TouchableOpacity
-          onPress={this.controlModal323}
+          onPress={this.controlModal}
           style={styles.centeredModal}>
           <View style={styles.modalView}>
-            <ItemHeader323 item323={item323} />
+            <ItemHeader item={item} />
 
-            <Text style={styles.label323}>Giới thiệu món</Text>
-            <Text style={styles.description323}>{item323.description}</Text>
+            <Text style={styles.label}>Giới thiệu món</Text>
+            <Text style={styles.description}>{item.description}</Text>
 
-            <View style={styles.order323}>
-              <View style={styles.quantity323}>
-                <TouchableOpacity onPress={this.decreaseQuantity323}>
+            <View style={styles.order}>
+              <View style={styles.quantity}>
+                <TouchableOpacity onPress={this.decreaseQuantity}>
                   <Icon
                     name="remove-circle-outline"
                     size={35}
@@ -95,19 +71,17 @@ export default class ItemModal extends Component {
                   />
                 </TouchableOpacity>
 
-                <Text style={styles.itemNumber323}>{item323.quantity}</Text>
+                <Text style={styles.itemNumber}>{item.quantity}</Text>
 
-                <TouchableOpacity onPress={this.increaseQuantity323}>
+                <TouchableOpacity onPress={this.increaseQuantity}>
                   <Icon name="add-circle-outline" size={35} color="#eb7e23" />
                 </TouchableOpacity>
               </View>
 
-              <View style={styles.buttonHolder323}>
-                <TouchableOpacity
-                  style={styles.button323}
-                  onPress={this.addItem323}>
-                  <Text style={styles.buttonLabel323}>
-                    {item323.quantity * item323.price}.000 đ
+              <View style={styles.buttonHolder}>
+                <TouchableOpacity style={styles.button}>
+                  <Text style={styles.buttonLabel}>
+                    {item.quantity * item.price}.000 đ
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -140,42 +114,42 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#fff',
     borderRadius: 10,
-    width: deviceWidth323 * 0.7,
+    width: deviceWidth * 0.7,
   },
-  label323: {
+  label: {
     fontWeight: 'bold',
     fontSize: 16,
     paddingVertical: 5,
     borderBottomWidth: 0.5,
     borderColor: '#aaa',
   },
-  description323: {
+  description: {
     fontSize: 16,
     paddingVertical: 5,
     borderBottomWidth: 0.5,
     borderColor: '#aaa',
   },
-  order323: {
+  order: {
     flexDirection: 'row',
     marginTop: 7,
   },
-  quantity323: {
+  quantity: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  itemNumber323: {
+  itemNumber: {
     fontSize: 20,
     fontWeight: 'bold',
     paddingHorizontal: 5,
   },
-  buttonHolder323: {
+  buttonHolder: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-  button323: {
+  button: {
     width: '80%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -186,7 +160,7 @@ const styles = StyleSheet.create({
     borderColor: '#fe9400',
     borderRadius: 10,
   },
-  buttonLabel323: {
+  buttonLabel: {
     fontWeight: 'bold',
     fontSize: 14,
     color: '#fff',
