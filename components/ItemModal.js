@@ -5,14 +5,13 @@ import {
   Text,
   Modal,
   TouchableOpacity,
-  Alert,
   Dimensions,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 const deviceWidth = Dimensions.get('window').width;
 
 //component
-import ItemHeader from './ItemHeader';
+import ItemModalHeader from './ItemModalHeader';
 
 const ItemModal = forwardRef((props, ref) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -32,7 +31,7 @@ const ItemModal = forwardRef((props, ref) => {
         onPress={() => setModalVisible(!modalVisible)}
         style={styles.centeredModal}>
         <View style={styles.modalView}>
-          <ItemHeader item={item} />
+          <ItemModalHeader item={item} />
 
           <Text style={styles.label}>Giới thiệu món</Text>
           <Text style={styles.description}>{item.description}</Text>

@@ -1,15 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  FlatList,
-  StatusBar,
-  Modal,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, ScrollView, View, Text} from 'react-native';
 
 //Components
 import ListItem from './ListItem';
