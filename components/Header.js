@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   ScrollView,
   View,
@@ -8,56 +8,41 @@ import {
   Dimensions,
 } from 'react-native';
 
-export default class Header extends Component {
-  render() {
-    const {
-      receipStatus,
-      changeToAll,
-      changeToOnDrink,
-      changeToCake,
-    } = this.props;
-
-    return (
-      <View style={styles.header}>
-        <TouchableOpacity
+export default function Header({receipStatus, setReceipStatus}) {
+  return (
+    <View style={styles.header}>
+      <TouchableOpacity
+        style={receipStatus === 0 ? styles.headerItemActive : styles.headerItem}
+        onPress={() => setReceipStatus(0)}>
+        <Text
           style={
-            receipStatus === 0 ? styles.headerItemActive : styles.headerItem
-          }
-          onPress={changeToAll}>
-          <Text
-            style={
-              receipStatus === 0 ? styles.headerLabelActive : styles.headerLabel
-            }>
-            Phổ biến
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+            receipStatus === 0 ? styles.headerLabelActive : styles.headerLabel
+          }>
+          Phổ biến
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={receipStatus === 1 ? styles.headerItemActive : styles.headerItem}
+        onPress={() => setReceipStatus(1)}>
+        <Text
           style={
-            receipStatus === 1 ? styles.headerItemActive : styles.headerItem
-          }
-          onPress={changeToOnDrink}>
-          <Text
-            style={
-              receipStatus === 1 ? styles.headerLabelActive : styles.headerLabel
-            }>
-            Thức uống
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+            receipStatus === 1 ? styles.headerLabelActive : styles.headerLabel
+          }>
+          Thức uống
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={receipStatus === 2 ? styles.headerItemActive : styles.headerItem}
+        onPress={() => setReceipStatus(2)}>
+        <Text
           style={
-            receipStatus === 2 ? styles.headerItemActive : styles.headerItem
-          }
-          onPress={changeToCake}>
-          <Text
-            style={
-              receipStatus === 2 ? styles.headerLabelActive : styles.headerLabel
-            }>
-            Đồ ăn
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+            receipStatus === 2 ? styles.headerLabelActive : styles.headerLabel
+          }>
+          Đồ ăn
+        </Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

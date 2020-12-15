@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, forwardRef, useImperativeHandle} from 'react';
 import {
   StyleSheet,
   View,
@@ -14,84 +14,60 @@ const deviceWidth = Dimensions.get('window').width;
 //component
 import ItemHeader from './ItemHeader';
 
-export default class ItemModal extends Component {
-  constructor() {
-    super();
-    this.state = {
-      modalVisible: false,
-      item: {},
-    };
-  }
+const ItemModal = forwardRef((props, ref) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [item, setItem] = useState({});
 
-  controlModal = (item) => {
-    this.setState({
-      modalVisible: !this.state.modalVisible,
-    });
-  };
+  //để sử dụng function trong component con
+  useImperativeHandle(ref, () => ({
+    controlModal(item) {
+      setModalVisible(!modalVisible);
+      setItem({...item, quantity: 1});
+    },
+  }));
 
-  increaseQuantity = () => {
-    const {item} = this.state;
-    this.setState({
-      item: {...item, quantity: ++item.quantity},
-    });
-  };
+  return (
+    <Modal animationType="fade" transparent={true} visible={modalVisible}>
+      <TouchableOpacity
+        onPress={() => setModalVisible(!modalVisible)}
+        style={styles.centeredModal}>
+        <View style={styles.modalView}>
+          <ItemHeader item={item} />
 
-  decreaseQuantity = () => {
-    const {item} = this.state;
-    if (item.quantity > 1) {
-      this.setState({
-        item: {...item, quantity: --item.quantity},
-      });
-    }
-  };
+          <Text style={styles.label}>Giới thiệu món</Text>
+          <Text style={styles.description}>{item.description}</Text>
 
-  render() {
-    const {item} = this.state;
-    return (
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={this.state.modalVisible}>
-        <TouchableOpacity
-          onPress={this.controlModal}
-          style={styles.centeredModal}>
-          <View style={styles.modalView}>
-            <ItemHeader item={item} />
+          <View style={styles.order}>
+            <View style={styles.quantity}>
+              <TouchableOpacity
+                onPress={() => {
+                  if (item.quantity > 1)
+                    setItem({...item, quantity: --item.quantity});
+                }}>
+                <Icon name="remove-circle-outline" size={35} color="#eb7e23" />
+              </TouchableOpacity>
 
-            <Text style={styles.label}>Giới thiệu món</Text>
-            <Text style={styles.description}>{item.description}</Text>
+              <Text style={styles.itemNumber}>{item.quantity}</Text>
 
-            <View style={styles.order}>
-              <View style={styles.quantity}>
-                <TouchableOpacity onPress={this.decreaseQuantity}>
-                  <Icon
-                    name="remove-circle-outline"
-                    size={35}
-                    color="#eb7e23"
-                  />
-                </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setItem({...item, quantity: ++item.quantity})}>
+                <Icon name="add-circle-outline" size={35} color="#eb7e23" />
+              </TouchableOpacity>
+            </View>
 
-                <Text style={styles.itemNumber}>{item.quantity}</Text>
-
-                <TouchableOpacity onPress={this.increaseQuantity}>
-                  <Icon name="add-circle-outline" size={35} color="#eb7e23" />
-                </TouchableOpacity>
-              </View>
-
-              <View style={styles.buttonHolder}>
-                <TouchableOpacity style={styles.button}>
-                  <Text style={styles.buttonLabel}>
-                    {item.quantity * item.price}.000 đ
-                  </Text>
-                </TouchableOpacity>
-              </View>
+            <View style={styles.buttonHolder}>
+              <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonLabel}>
+                  {item.quantity * item.price}.000 đ
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </TouchableOpacity>
-      </Modal>
-    );
-  }
-}
+        </View>
+      </TouchableOpacity>
+    </Modal>
+  );
+});
 
 const styles = StyleSheet.create({
   centeredModal: {
@@ -166,3 +142,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
+
+export default ItemModal;
